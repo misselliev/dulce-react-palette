@@ -37,3 +37,31 @@
     transform: rotate(360deg);
   }
 }
+
+.blue {
+  background-color: lightblue;
+}
+
+.ui.card {
+  flex-flow: wrap;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 1em;
+  width: 100%;
+}
+
+.color-drop {
+  background-color: pink;
+  margin: 2.5em;
+  height: 5em;
+  width: 5em;
+  border-radius: 100% !important;
+}
+
+.ui.card > :first-child {
+  border-radius: 100% !important;
+}
+
+.ui.card > :last-child {
+  border-radius: 100% !important;
+}
