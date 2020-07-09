@@ -23,10 +23,10 @@ body {
   border-radius: 100% !important;
 }
 
-.ui.card> :first-child {
+.ui.card > :first-child {
   border-radius: 100% !important;
 }
 
-.ui.card> :last-child {
+.ui.card > :last-child {
   border-radius: 100% !important;
 }
