@@ -59,3 +59,13 @@ i.icons {
   justify-content: space-evenly;
   flex-flow: wrap;
 }
+
+.ui.button {
+  background-color: #f4a5ae !important;
+  color: white;
+}
+
+.save-button {
+  margin: 2em !important;
+  border-radius: 1em !important;
+}

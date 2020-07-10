@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'proptypes';
+import { Button } from 'semantic-ui-react';
 import ColorDrop from './ColorDrop';
 
 const ColorCard = ({ colorArray }) => (
@@ -8,6 +9,7 @@ const ColorCard = ({ colorArray }) => (
       {colorArray.map(color => (
         <ColorDrop key={color} color={color} />
       ))}
+      <Button content="Save" icon="heart" className="save-button" />
     </div>
   </div>
 );
