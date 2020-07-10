@@ -2,6 +2,8 @@
 /* eslint-disable no-mixed-operators */
 import React from 'react';
 import ColorCard from './ColorCard';
+import Header from './Header';
+
 
 const Dashboard = () => {
   const colorArray = [];
@@ -52,7 +54,8 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="ui container blue">
+    <div className="ui container">
+      <Header />
       <ColorCard colorArray={colorArray} />
     </div>
   );

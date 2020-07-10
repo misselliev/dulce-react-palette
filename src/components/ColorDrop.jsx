@@ -13,7 +13,7 @@ class ColorDrop extends React.Component {
 
   render() {
     return (
-      <div className="color-container">
+      <div className="color-card">
         <div className="color-drop" style={{ backgroundColor: this.state.dropbackground, }} />
         <div className="color-name">{this.state.dropName}</div>
       </div>

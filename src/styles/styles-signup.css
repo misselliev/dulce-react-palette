@@ -1,0 +1,21 @@
+.signup {
+  height: 100%;
+}
+
+.signup-header {
+  color: #a8577e !important;
+  margin: 1em auto 1em auto !important;
+}
+
+.signup-column {
+  max-width: 450px;
+}
+
+.signup-input {
+  margin-bottom: 1em;
+}
+
+.signup-button {
+  background-color: #f4a5ae !important;
+  color: white !important;
+}
