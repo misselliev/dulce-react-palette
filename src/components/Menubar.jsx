@@ -1,26 +1,28 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
 
 const Menubar = () => (
-  <div className="ui menu">
-    <a className="header item" href="#top">
+  <Menu>
+    <Link className="header item" to="/">
       <i className="paw icon" />
       Dulce Palette
-    </a>
-    <div className="menu right">
-      <a className="item" href="#top">
+    </Link>
+    <Menu.Item className="menu right">
+      <Link className="item" href="/signup" to="/signup">
         <i className="user icon" />
         Signup
-      </a>
-      <a className="item" href="#top">
+      </Link>
+      <Link className="item" href="/login" to="/login">
         <i className="user icon" />
         Login
-      </a>
-      <a className="item" href="#top">
+      </Link>
+      <Link className="item" href="/favorites" to="/favorites">
         <i className="heart icon" />
         Favorites
-      </a>
-    </div>
-  </div>
+      </Link>
+    </Menu.Item>
+  </Menu>
 );
 
 export default Menubar;
