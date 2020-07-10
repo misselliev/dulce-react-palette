@@ -1,5 +1,5 @@
 .login {
-  height: 100vh;
+  height: 100%;
 }
 
 .login-column {
@@ -7,7 +7,8 @@
 }
 
 .login-header {
-  color: #59499e !important;
+  color: #a8577e !important;
+  margin: 1em auto 1em auto !important;
 }
 
 .login-input {
@@ -15,6 +16,6 @@
 }
 
 .login-button {
-  background-color: #5cba57 !important;
+  background-color: #f4a5ae !important;
   color: white !important;
 }

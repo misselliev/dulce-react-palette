@@ -3,8 +3,27 @@ body {
   background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
 }
 
+a {
+  color: #a8577e !important;
+  font-weight: bold !important;
+}
+
+i.icon,
+i.icons {
+  margin-bottom: 0.2em !important;
+}
+
+.ui.menu {
+  background-color: #f5d7e3;
+  height: 4rem;
+}
+
+.ui.menu .item {
+  position: inherit;
+}
+
 .ui.icon.header {
-  margin: 1em 0 1em !important;
+  margin: 1em 0 1.5em !important;
 }
 
 .ui.card {
@@ -29,4 +48,14 @@ body {
 
 .ui.card > :last-child {
   border-radius: 100% !important;
+}
+
+.color-card {
+  margin: 1em;
+}
+
+.color-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: wrap;
 }
