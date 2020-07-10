@@ -46,7 +46,7 @@ const SignupPage = () => (
             label="Password confirmation"
             style={{ marginBottom: '1em' }}
           />
-          <Button style={{ backgroundColor: '#5cba57', color: 'white' }} fluid size="large" type="submit">
+          <Button className="signup-button" fluid size="large" type="submit">
             Signup
           </Button>
         </Segment>
