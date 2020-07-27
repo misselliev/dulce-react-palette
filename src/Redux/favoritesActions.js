@@ -21,7 +21,7 @@ const addToFavorites = item => dispatch => {
 
 const fetchFavorites = () => dispatch => {
   const headers = JSON.parse(localStorage.user);
-  axios.get('', { headers }).then(res => {
+  axios.get('https://dulce-palette-api.herokuapp.com/api/v1/palettes', { headers }).then(res => {
     dispatch(loadFavorites(res.data));
   }).catch(error => {
     throw (error);
