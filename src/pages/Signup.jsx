@@ -11,10 +11,8 @@ const SignupPage = props => {
   const dispatch = useDispatch();
 
   const [signupForm, setSignupForm] = useState({
-    name: '',
     email: '',
     password: '',
-    password_confirmation: '',
   });
 
   const handleChange = e => setSignupForm({ ...signupForm, [e.target.name]: e.target.value });

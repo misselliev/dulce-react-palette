@@ -31,7 +31,7 @@ const logoutUser = () => dispatch => {
 };
 
 const newUser = userObj => dispatch => {
-  axios.post('https://localhost:3000/api/v1/auth/', userObj).then(res => {
+  axios.post('http://localhost:3000/api/v1/auth/', userObj).then(res => {
     dispatch(registerUser(res.data.data));
   }).catch(error => {
     throw (error);
