@@ -18,10 +18,6 @@ const Menubar = () => {
         Dulce Palette
       </Link>
       <Menu.Item className="menu right">
-        <Link className="item" href="/signup" to="/signup">
-          <i className="user icon" />
-          Signup
-        </Link>
         <Link className="item" href="/favorites" to="/favorites">
           <i className="heart icon" />
           Favorites
