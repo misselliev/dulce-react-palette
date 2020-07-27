@@ -4,7 +4,6 @@ import React from 'react';
 import ColorCard from './ColorCard';
 import Header from './Header';
 
-
 const Dashboard = () => {
   const colorArray = [];
   function hsvToRgb(hue, saturation, value) {
