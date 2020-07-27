@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const addFavorite = item => ({
   type: 'ADD_FAVORITE',
   payload: item,
@@ -17,8 +19,13 @@ const addToFavorites = item => dispatch => {
   dispatch(addFavorite(item));
 };
 
-const fetchFavorites = favorites => dispatch => {
-  dispatch(loadFavorites(favorites));
+const fetchFavorites = () => dispatch => {
+  const headers = JSON.parse(localStorage.user);
+  axios.get('', { headers }).then(res => {
+    dispatch(loadFavorites(res.data));
+  }).catch(error => {
+    throw (error);
+  });
 };
 
 const removeFromFavorites = item => dispatch => {

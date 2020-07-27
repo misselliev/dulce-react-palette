@@ -5,7 +5,7 @@ export default (state = {}, { type, payload }) => {
     case 'ADD_FAVORITE':
       return { ...state, favorites: [...state.favorites, payload] };
     case 'REMOVE_FAVORITE':
-      return { ...state, favorites: state.favorites.filter(item => item.id !== payload.id) };
+      return { ...state, favorites: state.favorites.filter(item => item !== payload) };
     default:
       return state;
   }
