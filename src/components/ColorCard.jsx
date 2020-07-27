@@ -5,12 +5,21 @@ import { Button } from 'semantic-ui-react';
 import favoriteActions from '../Redux/favoritesActions';
 import ColorDrop from './ColorDrop';
 
-const ColorCard = ({ colorArray }) => {
+const ColorCard = ({ colorArray, displayButton }) => {
   const currentUser = useSelector(state => state.user.currentUser, shallowEqual) || [];
   const dispatch = useDispatch();
   const addToFavorites = (colorArray, currentUser) => {
     dispatch(favoriteActions.addToFavorites(colorArray, currentUser));
   };
+  const removeFromFavorites = (colorArray, currentUser) => {
+    dispatch(favoriteActions.removeFromFavorites(colorArray, currentUser));
+  };
+
+  const actionButton = displayButton === 'favorites' ? (
+    <Button content="Remove" icon="heart" className="save-button" onClick={() => removeFromFavorites(colorArray, currentUser)} />
+  ) : (
+    <Button content="Save" icon="heart" className="save-button" onClick={() => addToFavorites(colorArray, currentUser)} />
+  );
 
   return (
     <div className="ui raised card">
@@ -18,7 +27,7 @@ const ColorCard = ({ colorArray }) => {
         {colorArray.map(color => (
           <ColorDrop key={color} color={color} />
         ))}
-        <Button content="Save" icon="heart" className="save-button" onClick={() => addToFavorites(colorArray, currentUser)} />
+        {actionButton}
       </div>
     </div>
   );
@@ -26,6 +35,7 @@ const ColorCard = ({ colorArray }) => {
 
 ColorCard.propTypes = {
   colorArray: PropTypes.instanceOf(Array).isRequired,
+  displayButton: PropTypes.string,
 };
 
 export default ColorCard;

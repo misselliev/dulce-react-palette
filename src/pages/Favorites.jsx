@@ -23,7 +23,7 @@ const FavoritesPage = () => {
           Favorites
         </Header>
         {favorites.map(color => (
-          <ColorCard colorArray={color} key={color} />
+          <ColorCard colorArray={color} key={color} displayButton="favorites" />
         ))}
       </Grid.Column>
     </Grid>
