@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import {
   Header, Icon, Grid,
 } from 'semantic-ui-react';
 import '../styles/styles-favorites.css';
 import ColorCard from '../components/ColorCard';
+import favoritesActions from '../Redux/favoritesActions';
 
 const FavoritesPage = () => {
-  const test = ['rgb(170, 121, 242)',
-'rgb(242, 121, 203)',
-'rgb(242, 181, 121)',
-'rgb(164, 242, 121)',
-'rgb(242, 121, 230)'];
+  const favorites = useSelector(state => state.favorites.favorites, shallowEqual) || [];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(favoritesActions.fetchFavorites(favorites));
+  }, [dispatch, favorites]);
 
   return (
     <Grid textAlign="center" className="middle aligned wall favorites">
@@ -19,7 +22,9 @@ const FavoritesPage = () => {
           <Icon name="heart" />
           Favorites
         </Header>
-        <ColorCard colorArray={test} />
+        {favorites.map(color => (
+          <ColorCard colorArray={color} key={color} />
+        ))}
       </Grid.Column>
     </Grid>
   );
