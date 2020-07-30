@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const BASE_URL = 'http://localhost:3000/api/v1/auth';
+
 const setUser = userObj => ({
   type: 'LOGIN_USER',
   payload: userObj,
@@ -15,9 +17,9 @@ const registerUser = userObj => ({
 });
 
 const loginUser = userObj => dispatch => {
-  axios.post('https://dulce-palette-api.herokuapp.com/api/v1/auth/sign_in', userObj).then(res => {
+  axios.post(`${BASE_URL}/sign_in`, userObj).then(res => {
     dispatch(setUser(res.data.data));
-    localStorage.setItem('user', JSON.stringify(res.headers));
+    localStorage.setItem('user', JSON.stringify({ current: res.data.data, headers: res.headers }));
   }).catch(error => {
     throw (error);
   });
@@ -25,14 +27,16 @@ const loginUser = userObj => dispatch => {
 
 const logoutUser = () => dispatch => {
   const headers = JSON.parse(localStorage.user);
-  axios.delete('https://dulce-palette-api.herokuapp.com/api/v1/auth/sign_out', { headers });
+  axios.delete(`${BASE_URL}/sign_out`, { headers });
   dispatch(clearUser());
-  localStorage.clear();
+  localStorage.removeItem('user');
 };
 
 const newUser = userObj => dispatch => {
-  axios.post('https://dulce-palette-api.herokuapp.com/api/v1/auth/', userObj).then(res => {
+  axios.post(`${BASE_URL}`, userObj).then(res => {
     dispatch(registerUser(res.data.data));
+    dispatch(setUser(res.data.data));
+    localStorage.setItem('user', JSON.stringify({ current: res.data.data, headers: res.headers }));
   }).catch(error => {
     throw (error);
   });

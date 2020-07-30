@@ -17,16 +17,16 @@ const SignupPage = props => {
 
   const handleChange = e => setSignupForm({ ...signupForm, [e.target.name]: e.target.value });
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const { history } = props;
-    dispatch(userActions.newUser(signupForm));
-    history.push('/');
-  };
-
   const {
     email, password, passwordConfirmation,
   } = signupForm;
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const { history } = props;
+    dispatch(userActions.newUser({ email, password }));
+    history.push('/');
+  };
 
   return (
     <Grid textAlign="center" className="middle aligned wall signup">
@@ -70,7 +70,7 @@ const SignupPage = props => {
               iconPosition="left"
               type="password"
               name="passwordConfirmation"
-              value={passwordConfirmation}
+              value={passwordConfirmation || ''}
               onChange={handleChange}
               placeholder="Password confirmation"
               label="Password confirmation"
