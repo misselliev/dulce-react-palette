@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const BASE_URL = 'http://localhost:3000/api/v1';
+
 const addFavorite = item => ({
   type: 'ADD_FAVORITE',
   payload: item,
@@ -16,12 +18,21 @@ const loadFavorites = favorites => ({
 });
 
 const addToFavorites = item => dispatch => {
-  dispatch(addFavorite(item));
+  axios.post(`${BASE_URL}/favorites`, item).then(res => {
+    console.log(res.data);
+    if (!res.data === 'error') {
+      dispatch(addFavorite(res.config.data));
+    }
+  }).catch(error => {
+    throw (error);
+  });
 };
 
 const fetchFavorites = () => dispatch => {
   const headers = JSON.parse(localStorage.user);
-  axios.get('https://dulce-palette-api.herokuapp.com/api/v1/palettes', { headers }).then(res => {
+  axios.get(`${BASE_URL}/favorites`, { headers }).then(res => {
+    console.log(res.data);
+    console.log(res);
     dispatch(loadFavorites(res.data));
   }).catch(error => {
     throw (error);
@@ -29,7 +40,13 @@ const fetchFavorites = () => dispatch => {
 };
 
 const removeFromFavorites = item => dispatch => {
-  dispatch(removeFavorite(item));
+  const headers = JSON.parse(localStorage.user);
+  console.log(item);
+  axios.delete(`${BASE_URL}/favorites/${item}`, { headers }).then(() => {
+    dispatch(removeFavorite(item));
+  }).catch(error => {
+    throw (error);
+  });
 };
 
 export default {
