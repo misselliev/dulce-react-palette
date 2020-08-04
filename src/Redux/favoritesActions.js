@@ -19,7 +19,6 @@ const loadFavorites = favorites => ({
 
 const addToFavorites = item => dispatch => {
   axios.post(`${BASE_URL}/favorites`, item).then(res => {
-    console.log(res.data);
     if (!res.data === 'error') {
       dispatch(addFavorite(res.config.data));
     }
@@ -31,8 +30,6 @@ const addToFavorites = item => dispatch => {
 const fetchFavorites = () => dispatch => {
   const headers = JSON.parse(localStorage.user);
   axios.get(`${BASE_URL}/favorites`, { headers }).then(res => {
-    console.log(res.data);
-    console.log(res);
     dispatch(loadFavorites(res.data));
   }).catch(error => {
     throw (error);
@@ -41,7 +38,6 @@ const fetchFavorites = () => dispatch => {
 
 const removeFromFavorites = item => dispatch => {
   const headers = JSON.parse(localStorage.user);
-  console.log(item);
   axios.delete(`${BASE_URL}/favorites/${item}`, { headers }).then(() => {
     dispatch(removeFavorite(item));
   }).catch(error => {

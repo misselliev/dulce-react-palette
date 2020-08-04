@@ -1,24 +1,23 @@
 import React from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'proptypes';
 import { Button } from 'semantic-ui-react';
 import favoriteActions from '../Redux/favoritesActions';
 import ColorDrop from './ColorDrop';
 
 const ColorCard = ({ colorArray, displayButton }) => {
-  const currentUser = useSelector(state => state.user.currentUser, shallowEqual) || [];
   const dispatch = useDispatch();
-  const addToFavorites = (colorArray, currentUser) => {
-    dispatch(favoriteActions.addToFavorites(colorArray, currentUser));
+  const addToFavorites = colorArray => {
+    dispatch(favoriteActions.addToFavorites(colorArray));
   };
-  const removeFromFavorites = (colorArray, currentUser) => {
-    dispatch(favoriteActions.removeFromFavorites(colorArray, currentUser));
+  const removeFromFavorites = colorArray => {
+    dispatch(favoriteActions.removeFromFavorites(colorArray));
   };
 
   const actionButton = displayButton === 'favorites' ? (
-    <Button content="Remove" icon="heart" className="save-button" onClick={() => removeFromFavorites(colorArray, currentUser)} />
+    <Button content="Remove" icon="heart" className="save-button" onClick={() => removeFromFavorites(colorArray)} />
   ) : (
-    <Button content="Save" icon="heart" className="save-button" onClick={() => addToFavorites(colorArray, currentUser)} />
+    <Button content="Save" icon="heart" className="save-button" onClick={() => addToFavorites({ colorArray })} />
   );
 
   return (
@@ -35,6 +34,7 @@ const ColorCard = ({ colorArray, displayButton }) => {
 
 ColorCard.propTypes = {
   colorArray: PropTypes.instanceOf(Array).isRequired,
+  // eslint-disable-next-line react/require-default-props
   displayButton: PropTypes.string,
 };
 
