@@ -1,7 +1,7 @@
 export default (state = {}, { type, payload }) => {
   switch (type) {
     case 'GET_PALETTE':
-      return { ...state, palettes: payload };
+      return { ...state, palette: payload };
     default:
       return state;
   }

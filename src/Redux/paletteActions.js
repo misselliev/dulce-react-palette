@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000/api/v1';
+const BASE_URL = 'https://dulce-palette-api.herokuapp.com/api/v1';
 
 const getPalette = palette => ({
   type: 'GET_PALETTE',
@@ -9,15 +9,7 @@ const getPalette = palette => ({
 
 const loadPalette = () => dispatch => {
   axios.get(`${BASE_URL}/palettes`).then(res => {
-    dispatch(getPalette(res.data.color_palette));
-  }).catch(error => {
-    throw (error);
-  });
-};
-
-const removePalette = () => dispatch => {
-  axios.get('http://localhost:3000/api/v1/palettes').then(res => {
-    dispatch(getPalette(res.data.color_palette));
+    dispatch(getPalette(res.data));
   }).catch(error => {
     throw (error);
   });
@@ -25,5 +17,4 @@ const removePalette = () => dispatch => {
 
 export default {
   loadPalette,
-  removePalette,
 };
