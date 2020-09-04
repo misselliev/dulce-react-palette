@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000/api/v1';
+const BASE_URL = 'https://dulce-palette-api.herokuapp.com/api/v1';
 
 const addFavorite = item => ({
   type: 'ADD_FAVORITE',
